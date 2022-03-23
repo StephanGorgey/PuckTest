@@ -16,8 +16,16 @@ $(document).ready(function () {
       var start_time;
       var connection;
       var xconnect = document.getElementById("myPuck_connect");
-      var step_count= [];
+      var step_count= document.getElementById("Step_Counter");
+  
+  function StepCounter()
+      {            
+        step_count.splice(0,data.length);
+        connection.write("setInterval(function(){Bluetooth.println(step().toFixed(3));} ,30); \n", function() { });
+                        };     
+      }
    
+  
       function bluetooth_connect() {
             Puck.connect(function(c) {
               //      alert("In Puck connect");

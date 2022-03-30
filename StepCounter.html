@@ -20,17 +20,8 @@ $(document).ready(function () {
       var xconnect = document.getElementById("myPuck_connect");
       var rec_startstop = document.getElementById("myrecord_start"); 
       
-      function steps_out () {
-            Puck.connect();
-            require("puckjsv2-accel-steps").on();
-            var steps = 0;
-            Puck.on('accel',function(a) {
-            digitalPulse(LED1,1,1);
-            steps++;
-            });
-      
-   
-      function bluetooth_connect() {
+
+        function bluetooth_connect() {
             Puck.connect(function(c) {
               //      alert("In Puck connect");
                       if (!c) {
@@ -52,6 +43,17 @@ $(document).ready(function () {
                         }); // connection.on ()
                         xconnect.textContent = "Disconnect Puck via Bluetooth";
             }); // End Puck.connect () 
+      
+    
+      function steps_out () {
+            Puck.connect();
+            require("puckjsv2-accel-steps").on();
+            var steps = 0;
+            Puck.on('accel',function(a) {
+                  digitalPulse(LED1,1,1);
+                  steps++; // turn off with require("puckjsv2-accel-steps").off();
+            });
+   
 }   
       
 

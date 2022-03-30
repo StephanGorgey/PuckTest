@@ -15,12 +15,20 @@
 <div id="div_g" style="width:1200px; height:600px;"></div>
 <script type="text/javascript">
 $(document).ready(function () {
-      var data = [];
+      var steps =  document.getElementById("mysteps_displayed");
       var connection;
       var xconnect = document.getElementById("myPuck_connect");
       var rec_startstop = document.getElementById("myrecord_start"); 
       
-   
+      function steps_out () {
+            Puck.connect();
+            require("puckjsv2-accel-steps").on();
+            var steps = 0;
+            Puck.on('accel',function(a) {
+            digitalPulse(LED1,1,1);
+            steps++;
+            });
+      
    
       function bluetooth_connect() {
             Puck.connect(function(c) {
@@ -51,6 +59,7 @@ $(document).ready(function () {
       // Scroll/look down at the bottom of this snippet to see how download is called
    
       xconnect.addEventListener("click", function () { bluetooth_connect() } );
+      xconnect.addEventListener("click", function () { steps_out() } );
     }); 
   
   

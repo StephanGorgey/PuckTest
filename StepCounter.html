@@ -20,21 +20,7 @@ $(document).ready(function () {
       var xconnect = document.getElementById("myPuck_connect");
       var rec_startstop = document.getElementById("myrecord_start");
       var getBattery = Puck.getBatteryPercentage()
-      
-
-         function onLine(v) {
-            if(rec_flag) {
-                        var x = new Date();  // current time 
-                        var y = parseFloat(v);
-                        if ( x.getTime() >= date_win_max) {
-                                    date_win_min += taxis_increment;
-                                     date_win_max += taxis_increment;
-                                     g.updateOptions( { dateWindow : [date_win_min, date_win_max] } );
-                        };
-                        data.push([x, y]);
-                        if ((data.length&15)==15) g.updateOptions( { 'file': data } );
-            };
-      }    
+       
       function bluetooth_connect() {
             Puck.connect(function(c) {
               //      alert("In Puck connect");

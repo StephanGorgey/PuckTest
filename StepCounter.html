@@ -45,11 +45,8 @@ $(document).ready(function () {
             }); // End Puck.connect () 
       
          function steps_out () {
-            require("puckjsv2-accel-steps").on();
-            var steps = 0;
-            Puck.on('accel',function(a) {
-                  digitalPulse(LED1,1,1);
-                  steps++; // turn off with require("puckjsv2-accel-steps").off();
+            const getBattery = () => Puck.getBatteryPercentage();
+               alert(getBattery);
             }); 
 
    

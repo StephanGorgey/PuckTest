@@ -18,7 +18,8 @@ $(document).ready(function () {
       var steps =  document.getElementById("mysteps_displayed");
       var connection;
       var xconnect = document.getElementById("myPuck_connect");
-      var rec_startstop = document.getElementById("myrecord_start"); 
+      var rec_startstop = document.getElementById("myrecord_start");
+      var getBattery = Puck.getBatteryPercentage()
       
 
        function bluetooth_connect() {
@@ -28,25 +29,11 @@ $(document).ready(function () {
                       alert("Couldn't connect!");
                           return;
                         }
-                        connection = c;               
-                  // Handle the data we get back, and call 'onLine'
-                  // whenever we get a line
-                        var buf = "";
-                        connection.on("data", function(d) {
-                         buf += d;
-                        var i = buf.indexOf("\n");
-                        while (i>=0) {
-                              onLine(buf.substr(0,i));
-                              buf = buf.substr(i+1);
-                              i = buf.indexOf("\n");
-                            }
-                        }); // connection.on ()
-                        xconnect.textContent = "Disconnect Puck via Bluetooth";
+                        connection = c;            
             }); // End Puck.connect () 
       
-         function steps_out () {
-            const getBattery = () => Puck.getBatteryPercentage();
-               alert(getBattery);
+         function battery_lvl () {
+            alert(getBattery);
             }); 
 
    

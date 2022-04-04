@@ -1,5 +1,3 @@
-
-
 <html>
 <head>
 
@@ -15,12 +13,11 @@
 <div id="div_g" style="width:1200px; height:600px;"></div>
 <script type="text/javascript">
 $(document).ready(function () {
-      var steps =  document.getElementById("mysteps_displayed");
+      var steps = []
       var connection;
       var xconnect = document.getElementById("myPuck_connect");
-      var rec_startstop = document.getElementById("myrecord_start");
-      var getBattery = Puck.getBatteryPercentage()
-       
+      var rec_startstop = document.getElementById("myrecord_start"); 
+   
       function bluetooth_connect() {
             Puck.connect(function(c) {
               //      alert("In Puck connect");
@@ -43,8 +40,6 @@ $(document).ready(function () {
                         }); // connection.on ()
                         xconnect.textContent = "Disconnect Puck via Bluetooth";
             }); // End Puck.connect () 
-          
-   
 }   
       
 
@@ -52,6 +47,7 @@ $(document).ready(function () {
       // Scroll/look down at the bottom of this snippet to see how download is called
    
       xconnect.addEventListener("click", function () { bluetooth_connect() } );
+      xconnect.addEventListener("click", function () { steps_out() } );
     }); 
   
   
